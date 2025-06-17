@@ -1,10 +1,10 @@
 {
-    "name": "your-username-here/project-name-here",
+    "name": "yukiemit/ad-task3",
     "type": "project",
     "authors": [
         {
-            "name": "your-username-here",
-            "email": "your-email-here@gmail.com"
+            "name": "yukiemit",
+            "email": "yukianenias@gmail.com"
         }
     ],
     "scripts": {
