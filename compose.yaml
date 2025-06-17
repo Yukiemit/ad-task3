@@ -4,7 +4,7 @@ services:
       context: .
     container_name: activity3-service
     ports:
-      - "23667:27017"
+      - "8000:8000"
     develop:
       watch:
         - path: .
@@ -25,7 +25,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: rootPassword
       MONGO_INITDB_DATABASE: act3database
     ports:
-      - "27611:27017"
+      - "27667:27017"
     volumes:
       - activity3-mongodb:/data/db/mongodb
 
