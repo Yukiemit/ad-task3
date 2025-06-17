@@ -4,7 +4,7 @@ $host = "host.docker.internal";
 $port = "5555";
 $username = "user";
 $password = "password";
-$dbname = "mydatabase";
+$dbname = "act3database";
 
 $conn_string = "host=$host port=$port dbname=$dbname user=$username password=$password";
 
