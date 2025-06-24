@@ -1,11 +1,14 @@
 <?php
-    define("HANDLERS_PATH", __DIR__ . "/handlers");
+require_once __DIR__ . "/bootstrap.php"; 
 ?>
+
 <html>
-    <body>
-    <?php 
-    include_once HANDLERS_PATH . "/mongodbChecker.handler.php";
-    include_once HANDLERS_PATH . "/postgreChecker.handler.php";
-    ?>
-    </body>
+<body>
+
+<?php
+include_once HANDLERS_PATH . "/mongodbChecker.handler.php";
+include_once HANDLERS_PATH . "/postgreChecker.handler.php";
+?>
+
+</body>
 </html>
