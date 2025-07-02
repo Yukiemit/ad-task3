@@ -1,49 +1,47 @@
+version: '3.8'
+
 services:
-  activity3:
+  app:
     build:
       context: .
-    container_name: activity3-service
-    ports:
-      - "8000:8000"
-    develop:
-      watch:
-        - path: .
-          target: /var/www/html
-          action: sync
-        - path: ./composer.json
-          action: rebuild
-        - path: ./composer.lock
-          action: rebuild
-    depends_on:
-      - mongodb
-
-  mongodb:
-    image: mongo:latest
-    container_name: activity3-mongodb
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: rootPassword
-      MONGO_INITDB_DATABASE: act3database
-    ports:
-      - "27667:27017"
+    container_name: php-app
     volumes:
-      - activity3-mongodb:/data/db/mongodb
+      - .:/var/www/html
+    working_dir: /var/www/html
+    depends_on:
+      - postgresql
+      - mongodb
+    environment:
+      ENV_emit: docker
+      PG_HOST: postgresql
+      PG_PORT: 5432
+      PG_DB: act3database
+      PG_USER: user
+      PG_PASS: password
+      MONGO_URI: mongodb://mongodb:27017
+      MONGO_DB: emitdatabase
+    command: php utils/dbResetPostgresql.util.php
 
   postgresql:
-    image: postgres:15
-    container_name: activity3-postgresql
-    restart: always
+    image: postgres:13
+    container_name: postgresql
     environment:
+      POSTGRES_DB: act3database
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: act3database
     ports:
-      - "5555:5432"
+      - "5432:5432"
     volumes:
-      - activity3-postgresql:/data/db/postgresql
+      - pgdata:/var/lib/postgresql/data
+
+  mongodb:
+    image: mongo:6
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
 
 volumes:
-  activity3-mongodb:
-    driver: local
-  activity3-postgresql:
-    driver: local
+  pgdata:
+  mongodata:
