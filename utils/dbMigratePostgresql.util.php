@@ -33,7 +33,7 @@ try {
     $pdo = new PDO($dsn, $pgConfig['user'], $pgConfig['pass'], [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     ]);
-    echo "✅ Connected to PostgreSQL\n";
+    //echo "✅ Connected to PostgreSQL\n";
 } catch (PDOException $e) {
     echo "❌ Connection failed: " . $e->getMessage() . "\n";
     exit(1);

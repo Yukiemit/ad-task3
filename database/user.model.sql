@@ -6,3 +6,12 @@ CREATE TABLE IF NOT EXISTS users (
     group_name VARCHAR(50),
     role VARCHAR(20)
 );
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password TEXT NOT NULL,
+    role VARCHAR(20) DEFAULT 'user'
+);
+
+INSERT INTO users (username, password) VALUES ('testuser', 'paste_hashed_here');

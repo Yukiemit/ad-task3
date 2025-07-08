@@ -8,7 +8,7 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     ]);
 
-    echo "✅ Connected to PostgreSQL!" . PHP_EOL;
+    //echo "✅ Connected to PostgreSQL!" . PHP_EOL;
     echo "📂 DUMMIES_PATH: " . DUMMIES_PATH . PHP_EOL;
 
     // Example SQL seeding
